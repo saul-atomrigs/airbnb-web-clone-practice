@@ -139,6 +139,7 @@ export default function Modal({
               border-b-[1px]"
             >
               <button
+                onClick={handleClose}
                 className="
                 p-1
                 border-0 

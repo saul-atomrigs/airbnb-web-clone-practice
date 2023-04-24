@@ -128,7 +128,7 @@ export default function RegisterModal() {
   return (
     <Modal
       disabled={isLoading}
-      // isOpen={RegisterModal.isOpen}
+      isOpen={registerModal.isOpen}
       title="Register"
       actionLabel="Continue"
       onClose={registerModal.onClose}
