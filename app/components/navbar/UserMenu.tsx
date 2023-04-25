@@ -5,8 +5,13 @@ import { AiOutlineMenu } from "react-icons/ai";
 import MenuItem from "./MenuItem";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
+import { SafeUser } from "@/app/types";
 
-export default function UserMenu() {
+type UserMenuProps = {
+  currentUser?: SafeUser | null;
+};
+
+export default function UserMenu({ currentUser }: UserMenuProps) {
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
 
@@ -55,7 +60,6 @@ export default function UserMenu() {
         >
           <AiOutlineMenu />
         </div>
-
         {isOpen && (
           <div
             className="
