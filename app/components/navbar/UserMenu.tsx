@@ -6,6 +6,7 @@ import MenuItem from "./MenuItem";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import { SafeUser } from "@/app/types";
+import Avatar from "../Avatar";
 
 type UserMenuProps = {
   currentUser?: SafeUser | null;
@@ -59,6 +60,9 @@ export default function UserMenu({ currentUser }: UserMenuProps) {
           "
         >
           <AiOutlineMenu />
+          <div className="hidden md:block">
+            <Avatar src={currentUser?.image} />
+          </div>
         </div>
         {isOpen && (
           <div
