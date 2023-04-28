@@ -82,10 +82,22 @@ export default function UserMenu({ currentUser }: UserMenuProps) {
                 cursor-pointer
               "
             >
-              <>
-                <MenuItem label="login" onClick={loginModal.onOpen} />
-                <MenuItem label="sign up" onClick={registerModal.onOpen} />
-              </>
+              {currentUser ? (
+                <>
+                  <MenuItem label="My trips" onClick={() => {}} />
+                  <MenuItem label="My favorites" onClick={() => {}} />
+                  <MenuItem label="My reservations" onClick={() => {}} />
+                  <MenuItem label="My properties" onClick={() => {}} />
+                  <MenuItem label="Airbnb your home" onClick={() => {}} />
+                  <hr />
+                  <MenuItem label="Logout" onClick={() => {}} />
+                </>
+              ) : (
+                <>
+                  <MenuItem label="Login" onClick={loginModal.onOpen} />
+                  <MenuItem label="Sign up" onClick={registerModal.onOpen} />
+                </>
+              )}
             </div>
           </div>
         )}
