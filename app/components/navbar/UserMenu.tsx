@@ -6,6 +6,7 @@ import MenuItem from "./MenuItem";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import { SafeUser } from "@/app/types";
+import Avatar from "../Avatar";
 
 type UserMenuProps = {
   currentUser?: SafeUser | null;
@@ -59,6 +60,9 @@ export default function UserMenu({ currentUser }: UserMenuProps) {
           "
         >
           <AiOutlineMenu />
+          <div className="hidden md:block">
+            <Avatar src={currentUser?.image} />
+          </div>
         </div>
         {isOpen && (
           <div
@@ -82,10 +86,22 @@ export default function UserMenu({ currentUser }: UserMenuProps) {
                 cursor-pointer
               "
             >
-              <>
-                <MenuItem label="login" onClick={loginModal.onOpen} />
-                <MenuItem label="sign up" onClick={registerModal.onOpen} />
-              </>
+              {currentUser ? (
+                <>
+                  <MenuItem label="My trips" onClick={() => {}} />
+                  <MenuItem label="My favorites" onClick={() => {}} />
+                  <MenuItem label="My reservations" onClick={() => {}} />
+                  <MenuItem label="My properties" onClick={() => {}} />
+                  <MenuItem label="Airbnb your home" onClick={() => {}} />
+                  <hr />
+                  <MenuItem label="Logout" onClick={() => {}} />
+                </>
+              ) : (
+                <>
+                  <MenuItem label="Login" onClick={loginModal.onOpen} />
+                  <MenuItem label="Sign up" onClick={registerModal.onOpen} />
+                </>
+              )}
             </div>
           </div>
         )}

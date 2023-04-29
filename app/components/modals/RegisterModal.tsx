@@ -11,6 +11,7 @@ import Input from "../Input";
 import Button from "../Button";
 import { FcGoogle } from "react-icons/fc";
 import { AiFillGithub } from "react-icons/ai";
+import { signIn } from "next-auth/react";
 
 export default function RegisterModal() {
   const [isLoading, setIsLoading] = useState(false);
@@ -89,15 +90,13 @@ export default function RegisterModal() {
         outline
         label="Continue with Google"
         icon={FcGoogle}
-        // onClick={() => signIn("google")}
-        onClick={() => {}}
+        onClick={() => signIn("google")}
       />
       <Button
         outline
         label="Continue with Github"
         icon={AiFillGithub}
-        // onClick={() => signIn("github")}
-        onClick={() => {}}
+        onClick={() => signIn("github")}
       />
       <div
         className="
