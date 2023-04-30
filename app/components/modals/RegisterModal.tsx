@@ -6,6 +6,7 @@ import { useForm, FieldValues } from "react-hook-form";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
+import useLoginModal from "@/app/hooks/useLoginModal";
 import Heading from "../Heading";
 import Input from "../Input";
 import Button from "../Button";
@@ -16,6 +17,7 @@ import { signIn } from "next-auth/react";
 export default function RegisterModal() {
   const [isLoading, setIsLoading] = useState(false);
   const registerModal = useRegisterModal();
+  const loginModal = useLoginModal();
 
   const {
     register,
@@ -47,7 +49,7 @@ export default function RegisterModal() {
 
   const onToggle = () => {
     registerModal.onClose();
-    // loginModal.onOpen();
+    loginModal.onOpen();
   };
 
   /** UI */

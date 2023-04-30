@@ -17,7 +17,7 @@ export default function CategoryBox({
   selected,
 }: CategoryBoxProps) {
   const router = useRouter();
-  const searchParams = useSearchParams;
+  const searchParams = useSearchParams();
 
   const handleClick = () => {
     let currentQuery = {};
