@@ -8,6 +8,7 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 import Heading from "../Heading";
 import CategoryInput from "../inputs/CategoryInput";
+import { categories } from "../navbar/Categories";
 
 enum STEPS {
   CATEGORY = 0,
@@ -79,13 +80,13 @@ export default function RentModal() {
     setIsLoading(true);
 
     try {
-      const res = await axios.post("/api/listings", data);
+      await axios.post("/api/listings", data);
       toast.success("Listing created!");
       router.refresh();
       reset();
       setStep(STEPS.CATEGORY);
       rentModal.onClose();
-    } catch (err) {
+    } catch (err: any) {
       toast.error(err.message);
     } finally {
       setIsLoading(false);
