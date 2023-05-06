@@ -56,7 +56,7 @@ export default function RentModal() {
   const bathroomCount = watch("bathroomCount");
   const imageSrc = watch("imageSrc");
 
-  // const Map = (() => dynamic(() => import("../Map"), { ssr: false }))();
+  const Map = (() => dynamic(() => import("../Map"), { ssr: false }))();
 
   const setCustomValue = (id: string, value: any) => {
     setValue(id, value, {
