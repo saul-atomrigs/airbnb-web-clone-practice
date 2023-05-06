@@ -7,6 +7,7 @@ import dynamic from "next/dynamic";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import Heading from "../Heading";
+import CategoryInput from "../inputs/CategoryInput";
 
 enum STEPS {
   CATEGORY = 0,
@@ -107,7 +108,7 @@ export default function RentModal() {
             <CategoryInput
               onClick={(category) => setCustomValue("category", category)}
               selected={category === item.label}
-              lebel={item.label}
+              label={item.label}
               icon={item.icon}
             />
           </div>
