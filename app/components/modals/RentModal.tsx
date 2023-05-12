@@ -11,6 +11,7 @@ import { toast } from "react-hot-toast";
 import Heading from "../Heading";
 import CategoryInput from "../inputs/CategoryInput";
 import { categories } from "../navbar/Categories";
+import ImageUpload from "../inputs/ImageUpload";
 
 enum STEPS {
   CATEGORY = 0,
