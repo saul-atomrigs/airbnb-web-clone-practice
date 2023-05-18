@@ -1,6 +1,8 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import Heading from "./components/Heading";
+import Button from "./components/Button";
 
 type EmptyStateProps = {
   title?: string;
