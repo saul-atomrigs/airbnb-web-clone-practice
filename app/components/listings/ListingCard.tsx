@@ -1,9 +1,11 @@
 "use client";
 
+import { MouseEvent } from "react";
 import useCountries from "@/app/hooks/useCountries";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Button from "../Button";
+import { format } from "date-fns";
 
 type ListingCardProps = {
   data: SafeListing;
@@ -28,6 +30,33 @@ export default function ListingCard({
   const { getByValue } = useCountries();
 
   const location = getByValue(data.locationValue);
+
+  const handleCancel = (e: MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+
+    if (disabled) {
+      return;
+    }
+  };
+
+  const price = () => {
+    if (reservation) {
+      return reservation.totalPrice;
+    }
+
+    return data.price;
+  };
+
+  const reservationDate = () => {
+    if (!reservation) {
+      return null;
+    }
+
+    const start = new Date(reservation.startDate);
+    const end = new Date(reservation.endDate);
+
+    return `${format(start, "PP")} - ${format(end, "PP")}}`;
+  };
 
   return (
     <div
