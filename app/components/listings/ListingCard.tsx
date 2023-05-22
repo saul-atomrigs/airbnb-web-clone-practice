@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Button from "../Button";
 import { format } from "date-fns";
+import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
 
 type ListingCardProps = {
   data: SafeListing;
