@@ -1,6 +1,7 @@
 import Container from "@/app/components/Container";
 import ListingHead from "@/app/components/listings/ListingHead";
 import ListingInfo from "@/app/components/listings/ListingInfo";
+import ListingReservation from "@/app/components/listings/ListingReservation";
 import { categories } from "@/app/components/navbar/Categories";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
@@ -43,6 +44,8 @@ export default function ListingClient({
       });
       dates = [...dates, ...range];
     });
+
+    return dates;
   };
 
   const category = () => {
@@ -120,7 +123,7 @@ export default function ListingClient({
                 dateRange={dateRange}
                 onSubmit={onCreateReservation}
                 disabled={isLoading}
-                disabledDates={disabledDates}
+                disabledDates={disabledDates()}
               />
             </div>
           </div>
