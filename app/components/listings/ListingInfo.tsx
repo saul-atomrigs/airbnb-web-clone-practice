@@ -1,11 +1,12 @@
 "use client";
 
+import dynamic from "next/dynamic";
+import { IconType } from "react-icons";
+
 import useCountries from "@/app/hooks/useCountries";
 import { SafeUser } from "@/app/types";
-import React from "react";
-import { IconType } from "react-icons";
 import Avatar from "../Avatar";
-import dynamic from "next/dynamic";
+import ListingCategory from "./ListingCategory";
 
 // next/dynamic is a composite of React.lazy() and Suspense:
 // ssr: false ->  dynamically load a component on the client side
@@ -17,13 +18,11 @@ type ListingInfoProps = {
   guestCount: number;
   roomCount: number;
   bathroomCount: number;
-  category:
-    | {
-        icon: IconType;
-        label: string;
-        description: string;
-      }
-    | unknown;
+  category: {
+    icon: IconType;
+    label: string;
+    description: string;
+  };
   locationValue: string;
 };
 
