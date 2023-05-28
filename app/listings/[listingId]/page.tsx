@@ -1,6 +1,9 @@
 import EmptyState from "@/app/EmptyState";
 import ClientOnly from "@/app/components/ClientOnly";
 import getListingById from "@/app/actions/getListingById";
+import ListingClient from "./ListingClient";
+import getReservations from "@/app/actions/getReservations";
+import getCurrentUser from "@/app/actions/getCurrentUser";
 
 type ListingPageProps = {
   listingId?: string;
