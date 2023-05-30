@@ -3,6 +3,7 @@ import getCurrentUser from "../actions/getCurrentUser";
 import ClientOnly from "../components/ClientOnly";
 import EmptyState from "../EmptyState";
 import getReservations from "../actions/getReservations";
+import TripsClient from "./TripsClient";
 
 export default async function page() {
   const currentUser = await getCurrentUser();
@@ -17,7 +18,7 @@ export default async function page() {
 
   const reservations = await getReservations({ userId: currentUser.id });
 
-  if (reservations.length === 0) {
+  if (reservations?.length === 0) {
     return (
       <ClientOnly>
         <EmptyState

@@ -10,7 +10,7 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 
 type TripsClientProps = {
-  reservations: SafeReservation[];
+  reservations?: SafeReservation[];
   currentUser?: SafeUser | null | undefined;
 };
 
@@ -42,7 +42,7 @@ export default function TripsClient({
         subtitle="Where you've been and where you're going"
       />
       <div className="mt-10 grid grid-cols-1 sm:grid-cols2 md:grid-cols-3 lg;grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8">
-        {reservations.map((reservation) => (
+        {reservations?.map((reservation) => (
           <ListingCard
             key={reservation.id}
             data={reservation.listing}
