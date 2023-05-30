@@ -15,7 +15,7 @@ type ListingCardProps = {
   disabled?: boolean;
   actionLabel?: string;
   actionId?: string;
-  currentUser: SafeUser | null;
+  currentUser: SafeUser | null | undefined;
 };
 
 export default function ListingCard({
