@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import Button from "../Button";
 import { format } from "date-fns";
 import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
+import HeartButton from "../HeartButton";
 
 type ListingCardProps = {
   data: SafeListing;
@@ -80,10 +81,10 @@ export default function ListingCard({
           {location?.region}, {location?.label}
         </div>
         <div className="font-light text-neutral-500">
-          {reservationDate || data.category}
+          {reservationDate() || data.category}
         </div>
         <div className="flex flex-col items-center gap-1">
-          <div className="font-semibold">$ {price}</div>
+          <div className="font-semibold">$ {price()}</div>
           {!reservation && <div className="font-light">night</div>}
         </div>
         {onAction && actionLabel && (
