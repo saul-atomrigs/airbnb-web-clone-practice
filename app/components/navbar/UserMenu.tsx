@@ -8,12 +8,16 @@ import useLoginModal from "@/app/hooks/useLoginModal";
 import useRentModal from "@/app/hooks/useRentModal";
 import { SafeUser } from "@/app/types";
 import Avatar from "../Avatar";
+import { useRouter } from "next/navigation";
+import { signOut } from "next-auth/react";
 
 type UserMenuProps = {
   currentUser?: SafeUser | null;
 };
 
 export default function UserMenu({ currentUser }: UserMenuProps) {
+  const router = useRouter();
+
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
   const rentModal = useRentModal();
@@ -99,13 +103,43 @@ export default function UserMenu({ currentUser }: UserMenuProps) {
             >
               {currentUser ? (
                 <>
-                  <MenuItem label="My trips" onClick={() => {}} />
-                  <MenuItem label="My favorites" onClick={() => {}} />
-                  <MenuItem label="My reservations" onClick={() => {}} />
-                  <MenuItem label="My properties" onClick={() => {}} />
-                  <MenuItem label="Airbnb your home" onClick={() => {}} />
+                  <MenuItem
+                    label="My trips"
+                    onClick={() => {
+                      router.push("/trips");
+                    }}
+                  />
+                  <MenuItem
+                    label="My favorites"
+                    onClick={() => {
+                      router.push("/favorites");
+                    }}
+                  />
+                  <MenuItem
+                    label="My reservations"
+                    onClick={() => {
+                      router.push("/reservations");
+                    }}
+                  />
+                  <MenuItem
+                    label="My properties"
+                    onClick={() => {
+                      router.push("/properties");
+                    }}
+                  />
+                  <MenuItem
+                    label="Airbnb your home"
+                    onClick={() => {
+                      rentModal.onOpen;
+                    }}
+                  />
                   <hr />
-                  <MenuItem label="Logout" onClick={() => {}} />
+                  <MenuItem
+                    label="Logout"
+                    onClick={() => {
+                      signOut();
+                    }}
+                  />
                 </>
               ) : (
                 <>
