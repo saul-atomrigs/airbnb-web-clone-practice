@@ -2,6 +2,8 @@ import React from 'react';
 import getCurrentUser from '../actions/getCurrentUser';
 import ClientOnly from '../components/ClientOnly';
 import EmptyState from '../EmptyState';
+import getFavoriteListings from '../actions/getFavoriteListings';
+import FavoritesClient from './FavoritesClient';
 
 export default async function ListingPage() {
   const listings = await getFavoriteListings();
