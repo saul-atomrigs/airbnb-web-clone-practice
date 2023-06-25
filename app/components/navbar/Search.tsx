@@ -1,10 +1,54 @@
-"use client";
-import { BiSearch } from "react-icons/bi";
+'use client';
+import useCountries from '@/app/hooks/useCountries';
+import { differenceInDays } from 'date-fns';
+import { useSearchParams } from 'next/navigation';
+import { BiSearch } from 'react-icons/bi';
 
 export default function Search() {
+  const searchModal = useSearchModal();
+  const params = useSearchParams();
+  const { getByValue } = useCountries();
+
+  const locationValue = params?.get('locationValue');
+  const startDate = params?.get('startDate');
+  const endDate = params?.get('endDate');
+  const guestCount = params?.get('guestCount');
+
+  const locationLabel = () => {
+    if (locationValue) {
+      return getByValue(locationValue as string)?.label;
+    }
+
+    return 'Anywhere';
+  };
+
+  const durationLabel = () => {
+    if (startDate && endDate) {
+      const start = new Date(startDate as string);
+      const end = new Date(endDate as string);
+      let diff = differenceInDays(end, start);
+
+      if (diff === 0) {
+        diff = 1;
+      }
+
+      return `${diff} Days`;
+    }
+
+    return 'Any week';
+  };
+
+  const guestLabel = () => {
+    if (guestCount) {
+      return `${guestCount} Guests`;
+    }
+
+    return 'Any guest';
+  };
+
   return (
     <div
-      onClick={() => {}}
+      onClick={searchModal.open}
       className="
         border-[1px] 
         w-full 
@@ -32,7 +76,7 @@ export default function Search() {
             px-6
           "
         >
-          locationLabel
+          {locationLabel()}
         </div>
         <div
           className="
@@ -46,7 +90,7 @@ export default function Search() {
             text-center
           "
         >
-          durationLabel
+          {durationLabel()}
         </div>
         <div
           className="
@@ -60,7 +104,7 @@ export default function Search() {
             gap-3
           "
         >
-          <div className="hidden sm:block">guestLabel</div>
+          <div className="hidden sm:block">{guestLabel()}</div>
           <div
             className="
               p-2 
